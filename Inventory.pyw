@@ -503,9 +503,7 @@ Item Selling Price: R %.2f''' % (SCDATA[0], SCDATA[1], SCDATA[2], SCDATA[3])
 
                 elif DECISION == 'About Program':
                     
-                    PROGCREDITS = '''This was developed by "Pratish Surendra Neerputh"
-also known as "kyroninja"
-for Malume's Spaza Shop. Application was created with:
+                    PROGCREDITS = '''This was developed for Malume's Spaza Shop. Application was created with:
 
 ---|>Python 3.9
 ---|>EasyGUI 0.98 Tk Frontend
