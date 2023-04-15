@@ -30,18 +30,17 @@ class Inventory():
         is to unpack the existing inventory or create it
         if the inventory file does not exist.'''
 
-##        if os.path.exists('invData.stock'):
-##            fseek = open('invData.stock', 'rb')
-##            try:
-##                self.invControl = pickle.load(fseek)
-##            except EOFError:
-##                pass
-##            else:
-##                return 1
-##            finally:
-##                fseek.close()
-
-        if True:
+        if os.path.exists('invData.stock'):
+            fseek = open('invData.stock', 'rb')
+            try:
+                self.invControl = pickle.load(fseek)
+            except EOFError:
+                pass
+            else:
+                return 1
+            finally:
+                fseek.close()
+        else:
             fb = open('invData.stock', 'wb')
             # connect to mysql on localhost
             cnx = mysql.connector.connect(user='test', password='abcdefg123', host='127.0.0.1', database='inventoryapp')
@@ -57,7 +56,6 @@ class Inventory():
             fb.close()
             cnx.close()
             cursor.close()
-            
             return 1
         
     def trunc_database(self):
@@ -103,6 +101,10 @@ class Inventory():
             return 1
         else:
             return 0
+    def closefile(self):
+        fseek = open('invData.stock','wb')
+        pickle.dump(self.invControl, fseek, protocol = 2)
+        fseek.close()
 
     def searchInv(self, name):
         '''This takes ONE argument and it retireves
@@ -512,6 +514,7 @@ Item Selling Price: R %.2f''' % (SCDATA[0], SCDATA[1], SCDATA[2], SCDATA[3])
 
                 else:
                     print("exiting now")
+                    P.closefile()
                     P.trunc_database()
                     P.update_database()
                     sys.exit(1)
