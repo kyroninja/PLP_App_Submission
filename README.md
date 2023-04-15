@@ -15,4 +15,4 @@ SP is the selling price
 Username: SUT
 Password: abcdefg123
   
-Added sample invStock.data file, if it exists it is used, else it pulls from db and also keeps a local copy incase there is no internet. When the program is closed it saves it locally and tried to update the server.
+Added sample invData.stock file, if it exists it is used, else it pulls from db and also keeps a local copy incase there is no internet. When the program is closed it saves it locally and tried to update the server.
